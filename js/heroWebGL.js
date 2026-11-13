@@ -27,7 +27,7 @@ export class HeroWebGL {
 
     this.width = this.container.clientWidth || window.innerWidth;
     this.height = this.container.clientHeight || 650;
-    this.dpr = Math.min(window.devicePixelRatio || 1, 2);
+    this.dpr = Math.min(window.devicePixelRatio || 1, 1.5);
 
     this.state = {
       mouse: new this.THREE.Vector2(0.5, 0.5),
@@ -44,6 +44,8 @@ export class HeroWebGL {
 
     this.clock = new this.THREE.Clock();
     this.isRunning = false;
+    this.isVisible = true;
+    this.idleFrames = 0;
     this.imageAspect = new this.THREE.Vector2(2560, 1722);
   }
 
@@ -124,7 +126,7 @@ export class HeroWebGL {
       }
     });
 
-    this.meshGeometry = new this.THREE.PlaneGeometry(2, 2, 120, 120);
+    this.meshGeometry = new this.THREE.PlaneGeometry(2, 2, 48, 48);
     this.mesh = new this.THREE.Mesh(this.meshGeometry, this.basReliefMaterial);
     this.scene.add(this.mesh);
 
@@ -241,9 +243,22 @@ export class HeroWebGL {
       window.addEventListener('resize', () => this._updateProjectionAndScales());
     }
 
+    // Intersection Observer to stop WebGL completely when scrolled past hero
+    if (window.IntersectionObserver) {
+      this.intersectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          const wasVisible = this.isVisible;
+          this.isVisible = entry.isIntersecting;
+          if (this.isVisible && !wasVisible) {
+            this._wakeUp();
+          }
+        });
+      }, { threshold: 0.02 });
+      this.intersectionObserver.observe(this.container);
+    }
+
     const onPointerMove = (clientX, clientY) => {
       const rect = this.container.getBoundingClientRect();
-      // Check if inside or near container
       const x = (clientX - rect.left) / rect.width;
       const y = 1.0 - (clientY - rect.top) / rect.height;
 
@@ -254,6 +269,7 @@ export class HeroWebGL {
         );
         this.state.targetPointerActive = 1.0;
         this.state.userInteracted = true;
+        this._wakeUp();
       } else {
         this.state.targetPointerActive = 0.0;
       }
@@ -262,6 +278,7 @@ export class HeroWebGL {
     this.container.addEventListener('pointerenter', (e) => {
       this.state.targetPointerActive = 1.0;
       this.state.userInteracted = true;
+      this._wakeUp();
       onPointerMove(e.clientX, e.clientY);
     });
 
@@ -273,11 +290,12 @@ export class HeroWebGL {
       this.state.targetPointerActive = 0.0;
     });
 
-    // Touch support (passive touchmove so scrolling page works smoothly)
+    // Touch support (passive touch listeners so page scroll is 100% native and never blocked)
     this.container.addEventListener('touchstart', (e) => {
       if (e.touches && e.touches.length > 0) {
         this.state.targetPointerActive = 1.0;
         this.state.userInteracted = true;
+        this._wakeUp();
         onPointerMove(e.touches[0].clientX, e.touches[0].clientY);
       }
     }, { passive: true });
@@ -293,9 +311,18 @@ export class HeroWebGL {
     }, { passive: true });
   }
 
+  _wakeUp() {
+    this.idleFrames = 0;
+    if (!this.isRunning && this.isVisible) {
+      this.isRunning = true;
+      requestAnimationFrame(() => this._animate());
+    }
+  }
+
   // Auto demonstration sweep for WOW effect on initial load
   _runAutoDemoSweep() {
     this.state.isAutoDemoRunning = true;
+    this._wakeUp();
     const startTime = performance.now();
     const duration = 2800; // ms
 
@@ -309,7 +336,6 @@ export class HeroWebGL {
       const progress = Math.min(elapsed / duration, 1.0);
 
       if (progress < 1.0) {
-        // Smooth sine wave across the house facade
         const t = progress * Math.PI;
         const x = 0.42 + Math.sin(t) * 0.18;
         const y = 0.46 + Math.cos(t * 1.5) * 0.12;
@@ -331,6 +357,7 @@ export class HeroWebGL {
   setManualNight(isNight) {
     this.state.targetManualNight = isNight ? 1.0 : 0.0;
     this.state.userInteracted = true;
+    this._wakeUp();
   }
 
   toggleManualNight() {
@@ -340,11 +367,10 @@ export class HeroWebGL {
   }
 
   _animate() {
-    if (!this.isRunning) return;
-    requestAnimationFrame(() => this._animate());
-
-    const delta = this.clock.getDelta();
-    const time = this.clock.getElapsedTime();
+    if (!this.isRunning || !this.isVisible) {
+      this.isRunning = false;
+      return;
+    }
 
     // Smooth lerps
     this.state.prevMouse.copy(this.state.mouse);
@@ -353,6 +379,24 @@ export class HeroWebGL {
     this.state.velocity.subVectors(this.state.mouse, this.state.prevMouse);
     this.state.pointerActive += (this.state.targetPointerActive - this.state.pointerActive) * 0.12;
     this.state.manualNight += (this.state.targetManualNight - this.state.manualNight) * 0.08;
+
+    // Smart idle detection: when cursor is still and night settled, pause loop to free GPU
+    const isMoving = this.state.velocity.lengthSq() > 0.000001 || this.state.pointerActive > 0.005;
+    const isNightAnimating = Math.abs(this.state.targetManualNight - this.state.manualNight) > 0.005;
+
+    if (!isMoving && !isNightAnimating && !this.state.isAutoDemoRunning) {
+      this.idleFrames++;
+      if (this.idleFrames > 60) {
+        this.isRunning = false;
+        return;
+      }
+    } else {
+      this.idleFrames = 0;
+    }
+
+    requestAnimationFrame(() => this._animate());
+
+    const time = this.clock.getElapsedTime();
 
     // 1. Update Fluid Simulation
     const fUniforms = this.fluidMaterial.uniforms;
@@ -384,6 +428,7 @@ export class HeroWebGL {
 
   dispose() {
     this.isRunning = false;
+    if (this.intersectionObserver) this.intersectionObserver.disconnect();
     if (this.resizeObserver) this.resizeObserver.disconnect();
     if (this.rtA) this.rtA.dispose();
     if (this.rtB) this.rtB.dispose();

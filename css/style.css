@@ -43,7 +43,6 @@
 }
 
 html {
-  scroll-behavior: smooth;
   font-size: 16px;
   background-color: var(--bg-page);
   color: var(--text-main);
@@ -111,6 +110,7 @@ button {
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border-delicate);
+  transform: translateZ(0);
   transition: padding var(--transition), background var(--transition);
 }
 
@@ -476,6 +476,8 @@ button {
   box-shadow: var(--shadow-elevated);
   background: #181c20;
   cursor: crosshair;
+  transform: translateZ(0);
+  contain: layout paint;
 }
 
 .hero-webgl-canvas {
