@@ -518,8 +518,8 @@ class HeroWebGL {
     this.clock.start();
     this._animate();
 
-    // 9. Initial subtle demonstration sweep
-    if (CONFIG.hero.autoSweepOnStart) {
+    // 9. Initial subtle demonstration sweep (desktop only)
+    if (CONFIG.hero.autoSweepOnStart && window.innerWidth > 768 && !window.matchMedia('(pointer: coarse)').matches) {
       setTimeout(() => {
         if (!this.state.userInteracted) {
           this._runAutoDemoSweep();
@@ -631,7 +631,15 @@ class HeroWebGL {
       this.intersectionObserver.observe(this.container);
     }
 
+    const isMobileDevice = () => window.innerWidth <= 768 || window.matchMedia('(pointer: coarse)').matches;
+
     const onPointerMove = (clientX, clientY) => {
+      // Disable pointer brush effect on mobile/touch screens to ensure 100% smooth native page scrolling
+      if (isMobileDevice()) {
+        this.state.targetPointerActive = 0.0;
+        return;
+      }
+
       const rect = this.container.getBoundingClientRect();
       const x = (clientX - rect.left) / rect.width;
       const y = 1.0 - (clientY - rect.top) / rect.height;
@@ -650,6 +658,7 @@ class HeroWebGL {
     };
 
     this.container.addEventListener('pointerenter', (e) => {
+      if (isMobileDevice()) return;
       this.state.targetPointerActive = 1.0;
       this.state.userInteracted = true;
       this._wakeUp();
@@ -657,32 +666,13 @@ class HeroWebGL {
     });
 
     this.container.addEventListener('pointermove', (e) => {
+      if (isMobileDevice()) return;
       onPointerMove(e.clientX, e.clientY);
     });
 
     this.container.addEventListener('pointerleave', () => {
       this.state.targetPointerActive = 0.0;
     });
-
-    // Touch support (passive touch listeners so page scroll is 100% native and never blocked)
-    this.container.addEventListener('touchstart', (e) => {
-      if (e.touches && e.touches.length > 0) {
-        this.state.targetPointerActive = 1.0;
-        this.state.userInteracted = true;
-        this._wakeUp();
-        onPointerMove(e.touches[0].clientX, e.touches[0].clientY);
-      }
-    }, { passive: true });
-
-    this.container.addEventListener('touchmove', (e) => {
-      if (e.touches && e.touches.length > 0) {
-        onPointerMove(e.touches[0].clientX, e.touches[0].clientY);
-      }
-    }, { passive: true });
-
-    this.container.addEventListener('touchend', () => {
-      this.state.targetPointerActive = 0.0;
-    }, { passive: true });
   }
 
   _wakeUp() {
