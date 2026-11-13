@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>Посёлок «ОНИКС» — ПРИМДОМ.РФ | Готовые дома в Находке</title>
+  
+  <meta name="description" content="Камерный коттеджный посёлок ОНИКС в г. Находка. 36 готовых домов в стиле Барнхаус в окружении леса на ул. Гранатовой. Чистовая отделка, коммуникации, 5 минут до центра. Ипотека от 2%." />
+  <meta property="og:title" content="Коттеджный посёлок «ОНИКС» · ПРИМДОМ.РФ" />
+  <meta property="og:description" content="Готовые дома в Находке в 5 минутах от центра. Ул. Гранатовая. Чистовая отделка, ипотека от 2%." />
+  <meta property="og:image" content="./assets/images/hero/day.jpg" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="./assets/images/logo.png" />
+
+  <!-- Google Font: Manrope -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Core Stylesheet -->
+  <link rel="stylesheet" href="./css/style.css" />
+
+  <!-- Three.js (Local with CDN fallback) -->
+  <script src="./js/libs/three.min.js"></script>
+  <script>
+    if (!window.THREE) {
+      document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"><\/script>');
+    }
+  </script>
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      
+      <!-- Brand Logo -->
+      <a href="#" class="brand-wrap">
+        <span class="brand-title">ПРИМДОМ</span>
+        <span class="brand-sep">/</span>
+        <span class="brand-subtitle">посёлок Оникс</span>
+      </a>
+
+      <!-- Desktop Navigation Menu (hidden on mobile) -->
+      <nav class="desktop-nav">
+        <ul class="nav-links">
+          <li><a href="#about" class="nav-link">О посёлке</a></li>
+          <li><a href="#plan" class="nav-link">Схема посёлка</a></li>
+          <li><a href="#houses" class="nav-link">Дома и фото</a></li>
+          <li><a href="#contacts" class="nav-link">Контакты</a></li>
+        </ul>
+      </nav>
+
+      <!-- Header Action Controls -->
+      <div class="header-actions">
+        <!-- Desktop Call & WhatsApp (visible >= 768px) -->
+        <a href="tel:+79143313325" class="phone-link desktop-only">+7 914 331 33 25</a>
+        <a href="https://wa.me/79143313325?text=Здравствуйте!%20Хочу%20узнать%20подробнее%20о%20посёлке%20Оникс%20в%20Находке" target="_blank" rel="noopener noreferrer" class="wa-btn-minimal desktop-only">WhatsApp</a>
+
+        <!-- Mobile Quick Call Icon Button (visible < 768px) -->
+        <a href="tel:+79143313325" class="mobile-icon-btn mobile-only" aria-label="Позвонить в отдел продаж">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+          </svg>
+        </a>
+
+        <!-- Mobile Quick WhatsApp Icon Button (visible < 768px) -->
+        <a href="https://wa.me/79143313325?text=Здравствуйте!%20Хочу%20узнать%20подробнее%20о%20посёлке%20Оникс%20в%20Находке" target="_blank" rel="noopener noreferrer" class="mobile-icon-btn mobile-wa-btn mobile-only" aria-label="Написать в WhatsApp">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.23 8.23 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m4.52 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.02-1.25-.75-.67-1.26-1.5-1.4-1.75-.15-.25-.02-.39.11-.51.11-.11.25-.29.38-.44.13-.15.17-.25.25-.42.08-.17.04-.32-.02-.45-.06-.13-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43l-.48-.01c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.77 2.7 4.29 3.79.6.26 1.07.41 1.44.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.17-.48-.3z"/>
+          </svg>
+        </a>
+
+        <!-- Hamburger Button (visible < 768px) -->
+        <button type="button" class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Открыть меню навигации">
+          <span class="bar bar-1"></span>
+          <span class="bar bar-2"></span>
+          <span class="bar bar-3"></span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Fullscreen Mobile Navigation Drawer (Independent of header stacking context) -->
+  <div class="mobile-drawer" id="mobile-drawer">
+    <div class="drawer-header">
+      <a href="#" class="brand-wrap drawer-brand-link" aria-label="На главную">
+        <span class="brand-title">ПРИМДОМ</span>
+        <span class="brand-sep">/</span>
+        <span class="brand-subtitle">посёлок Оникс</span>
+      </a>
+      <button type="button" class="drawer-close-btn" id="drawer-close-btn" aria-label="Закрыть меню">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <div class="drawer-content">
+      <ul class="drawer-links">
+        <li>
+          <a href="#about" class="drawer-link">
+            <span>О посёлке</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a href="#plan" class="drawer-link">
+            <span>Схема посёлка</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a href="#houses" class="drawer-link">
+            <span>Дома и фото</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a href="#contacts" class="drawer-link">
+            <span>Контакты</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </a>
+        </li>
+      </ul>
+
+      <div class="drawer-contacts-card">
+        <span class="drawer-meta-tag">Отдел продаж</span>
+        <a href="tel:+79143313325" class="drawer-phone">+7 914 331 33 25</a>
+        <span class="drawer-subphone">Дополнительный: <a href="tel:+79940162050">+7 994 016 20 50</a></span>
+        <span class="drawer-address">г. Находка, ул. Гранатовая</span>
+        
+        <div class="drawer-buttons">
+          <a href="https://wa.me/79143313325?text=Здравствуйте!%20Хочу%20узнать%20подробнее%20о%20посёлке%20Оникс%20в%20Находке" target="_blank" rel="noopener noreferrer" class="drawer-btn-wa">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.23 8.23 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m4.52 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.02-1.25-.75-.67-1.26-1.5-1.4-1.75-.15-.25-.02-.39.11-.51.11-.11.25-.29.38-.44.13-.15.17-.25.25-.42.08-.17.04-.32-.02-.45-.06-.13-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43l-.48-.01c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.77 2.7 4.29 3.79.6.26 1.07.41 1.44.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.17-.48-.3z"/>
+            </svg>
+            <span>Написать в WhatsApp</span>
+          </a>
+          <a href="https://t.me/KosVlasov" target="_blank" rel="noopener noreferrer" class="drawer-btn-tg">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 0 0-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/>
+            </svg>
+            <span>Написать в Telegram</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero Section: Pure Architectural Window with Interactive Lighting -->
+  <section class="hero-section" id="hero">
+    <div class="hero-wrapper">
+      <div class="hero-stage" id="hero-stage">
+        
+        <!-- Discreet Day/Night Switch Button inside the scene -->
+        <button type="button" class="hero-mobile-toggle" id="hero-mobile-toggle" aria-label="Переключить вечерний свет">
+          <span class="hero-toggle-icon">☀</span>
+          <span class="hero-toggle-text">Вечер</span>
+        </button>
+
+        <!-- Exquisite Minimal Title Floating on Canvas -->
+        <div class="hero-title-overlay">
+          <span class="hero-place">г. Находка · ул. Гранатовая</span>
+          <h1 class="hero-title">ПОСЁЛОК ОНИКС</h1>
+          <p class="hero-subtitle">Готовые дома в стиле барнхаус в окружении леса</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: About in a Nutshell («В двух словах») -->
+  <section class="section-pad" id="about">
+    <div class="container">
+      <div class="about-grid">
+        
+        <div class="about-prose">
+          <span class="section-label">Концепция</span>
+          <h2 class="section-title">Камерный посёлок на 36 домов в 5 минутах от центра Находки</h2>
+          
+          <p>
+            Мы создаем <strong>«Оникс»</strong> для тех, кто устал от неопределенности и хочет готовый загородный дом без бесконечной стройки, согласований и поиска бригад. 
+          </p>
+          <p>
+            Все дома строятся из автоклавного газобетона на монолитных плитах в едином архитектурном стиле барнхаус: панорамное остекление, второй свет с потолками до 5 метров, графитовый фальц и теплое дерево. Дома сдаются со 100% чистовой отделкой и всеми подключенными сетями: собственная скважина, септик, водяные теплые полы.
+          </p>
+          
+          <div class="about-prose-quote">
+            «Вы сразу видите реальный результат, а не картинку в проекте. Заехать можно в первый же день».
+          </div>
+        </div>
+
+        <div class="about-metrics">
+          <div class="metric-item">
+            <span class="metric-val">36</span>
+            <span class="metric-label">домов в посёлке</span>
+            <span class="metric-desc">Единый скандинавский стиль</span>
+          </div>
+
+          <div class="metric-item">
+            <span class="metric-val">5 мин</span>
+            <span class="metric-label">до центра города</span>
+            <span class="metric-desc">Асфальтированный подъезд</span>
+          </div>
+
+          <div class="metric-item">
+            <span class="metric-val">100%</span>
+            <span class="metric-label">чистовая отделка</span>
+            <span class="metric-desc">Потолки до 5м, ламинат, двери</span>
+          </div>
+
+          <div class="metric-item">
+            <span class="metric-val">от 2%</span>
+            <span class="metric-label">льготная ипотека</span>
+            <span class="metric-desc">Дальневосточная и Семейная</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="container"><div class="section-divider"></div></div>
+
+  <!-- Section: Master Plan (Схема посёлка) -->
+  <section class="section-pad" id="plan">
+    <div class="container">
+      <div class="section-lead">
+        <span class="section-label">Генеральный план</span>
+        <h2 class="section-title">Схема посёлка «Оникс»</h2>
+        <p class="section-desc">
+          36 участков с продуманной посадкой домов по сторонам света. Первая очередь уже построена.
+        </p>
+      </div>
+
+      <div class="plan-block">
+        <div class="plan-figure" id="plan-img-wrap">
+          <img src="./assets/images/plan_visual.jpg" alt="Схема посёлка Оникс, г. Находка, ул. Гранатовая" class="plan-img" id="plan-img" />
+          <div class="plan-zoom-indicator">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              <line x1="11" y1="8" x2="11" y2="14"></line>
+              <line x1="8" y1="11" x2="14" y2="11"></line>
+            </svg>
+            <span>Увеличить</span>
+          </div>
+        </div>
+
+        <div class="plan-details">
+          <h3 class="plan-details-title">Продуманная закрытая территория</h3>
+          <div class="plan-address-tag">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+            <span>г. Находка, ул. Гранатовая</span>
+          </div>
+
+          <ul class="plan-points-list">
+            <li>Центральное общественное пространство — прогулочная зона, детская и спортивная площадки</li>
+            <li>Широкие освещенные проезды с дренажной системой</li>
+            <li>Закрытый приватный въезд, шлагбаум и видеонаблюдение</li>
+            <li>Посёлок примыкает к вековому дубовому лесу, защищающему от ветров</li>
+          </ul>
+
+          <div>
+            <a href="#contacts" class="btn-contact-dark">Уточнить доступные участки</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="container"><div class="section-divider"></div></div>
+
+  <!-- Section: 3 House Types & Photo Gallery -->
+  <section class="section-pad" id="houses">
+    <div class="container">
+      <div class="section-lead">
+        <span class="section-label">Проекты</span>
+        <h2 class="section-title">Готовые дома и фотографии</h2>
+        <p class="section-desc">
+          Нажмите на карточку любого дома, чтобы открыть галерею реальных фотографий экстерьера и чистовой отделки.
+        </p>
+      </div>
+
+      <!-- 3 Houses Grid -->
+      <div class="houses-grid" id="houses-container"></div>
+
+    </div>
+  </section>
+
+  <div class="container"><div class="section-divider"></div></div>
+
+  <!-- Section: Contacts & Visiting Card (Визитка) -->
+  <section class="section-pad" id="contacts">
+    <div class="container">
+      <div class="section-lead">
+        <span class="section-label">Контакты</span>
+        <h2 class="section-title">Как нас найти и посмотреть посёлок</h2>
+      </div>
+
+      <div class="visiting-card-wrap">
+        
+        <div class="visiting-info-col">
+          <div class="billboard-callout">
+            <p>
+              <strong>Ориентир для водителей:</strong> Тот самый рекламный баннер <strong>«ПРИМДОМ.РФ»</strong> прямо на повороте с трассы к посёлку на ул. Гранатовую.
+            </p>
+          </div>
+
+          <div class="contact-meta-blocks">
+            <div class="contact-meta-item">
+              <span class="contact-meta-tag">Отдел продаж и показы</span>
+              <a href="tel:+79143313325" class="contact-phone-primary">+7 914 331 33 25</a>
+              <span style="font-size: 0.9rem; color: var(--text-muted);">Дополнительный: <a href="tel:+79940162050" style="color: var(--text-secondary);">+7 994 016 20 50</a></span>
+            </div>
+
+            <div class="contact-meta-item">
+              <span class="contact-meta-tag">Адрес</span>
+              <span class="contact-address-text">Приморский край, г. Находка, ул. Гранатовая</span>
+              <span style="font-size: 0.85rem; color: var(--text-muted);">Ежедневно с 09:00 до 20:00 (просмотр по предварительной договоренности)</span>
+            </div>
+          </div>
+
+          <div class="contact-direct-actions">
+            <a href="https://wa.me/79143313325?text=Здравствуйте!%20Хочу%20записаться%20на%20просмотр%20посёлка%20Оникс%20в%20Находке" target="_blank" rel="noopener noreferrer" class="btn-contact-dark">
+              <span>Написать в WhatsApp</span>
+            </a>
+            <a href="https://t.me/KosVlasov" target="_blank" rel="noopener noreferrer" class="btn-contact-border">
+              <span>Telegram (@KosVlasov)</span>
+            </a>
+            <a href="https://t.me/primdomnhk" target="_blank" rel="noopener noreferrer" class="btn-contact-border">
+              <span>Канал @primdomnhk</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Minimal Viewing Form -->
+        <div class="visiting-form-col">
+          <h3 class="visiting-form-title">Запись на просмотр</h3>
+          <p class="visiting-form-sub">Оставьте контакты — мы согласуем удобное для вас время приезда.</p>
+
+          <form id="viewing-form">
+            <div class="minimal-form-group">
+              <label for="v-name" class="minimal-label">Ваше имя</label>
+              <input type="text" id="v-name" class="minimal-input" placeholder="Константин" required />
+            </div>
+
+            <div class="minimal-form-group">
+              <label for="v-phone" class="minimal-label">Номер телефона</label>
+              <input type="tel" id="v-phone" class="minimal-input" placeholder="+7 (999) 000-00-00" required />
+            </div>
+
+            <div class="minimal-form-group">
+              <label for="v-note" class="minimal-label">Удобный день или вопрос</label>
+              <input type="text" id="v-note" class="minimal-input" placeholder="Например: завтра после 14:00" />
+            </div>
+
+            <button type="submit" class="minimal-submit-btn">Договориться о встрече</button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Plan Fullscreen Modal -->
+  <div class="plan-modal" id="plan-modal">
+    <div class="plan-modal-backdrop" id="plan-modal-backdrop"></div>
+    <div class="plan-modal-dialog">
+      <button type="button" class="plan-modal-close" id="plan-modal-close" aria-label="Закрыть">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      <img src="./assets/images/plan_visual.jpg" alt="Генеральный план посёлка Оникс" class="plan-modal-img" />
+    </div>
+  </div>
+
+  <!-- Minimal Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <strong>ПРИМДОМ.РФ</strong> / Посёлок «ОНИКС»
+      </div>
+      <div>
+        г. Находка, ул. Гранатовая · <a href="tel:+79143313325" style="color: var(--text-main); font-weight: 600;">+7 914 331 33 25</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Application Script (Standalone bundle works with and without web server) -->
+  <script src="./js/bundle.js"></script>
+
+</body>
+</html>

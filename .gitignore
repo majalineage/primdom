@@ -1,0 +1,7 @@
+# Raw camera photos dump (optimized web photos are in assets/images/)
+photos/
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+*.log
