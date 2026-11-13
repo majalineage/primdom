@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
       heroToggle.classList.toggle('is-night', isNight);
       const icon = heroToggle.querySelector('.hero-toggle-icon');
       const text = heroToggle.querySelector('.hero-toggle-text');
-      if (icon) icon.textContent = isNight ? '🌙' : '☀';
+      if (icon) icon.textContent = isNight ? '☀' : '🌙';
       if (text) text.textContent = isNight ? 'День' : 'Вечер';
     });
   }
